@@ -2,8 +2,8 @@
 // @name        Google Play - Switch to English
 // @namespace   localhost
 // @description Forces language to English on Google Play Store
-// @include     https://play.google.com/store/apps/*
-// @exclude     https://play.google.com/store/apps/*hl=en*
+// @include     https://play.google.com/store/*
+// @exclude     https://play.google.com/store/*hl=en*
 // @version     1
 // @grant       none
 // ==/UserScript==
