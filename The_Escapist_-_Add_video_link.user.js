@@ -9,10 +9,14 @@
 
 function addLink()
 {
+    var video = document.querySelector("video");
+    video.autoplay = false;
+    video.pause();
+
     var link = document.createElement("a");
     link.appendChild(document.createTextNode("Direct link"));
     link.className = "video_menu_link";
-    link.href = document.querySelector("video").src;
+    link.href = video.src;
 
     var menu = document.querySelector("#video_player_menu");
     menu.insertBefore(link, menu.children[0]);
