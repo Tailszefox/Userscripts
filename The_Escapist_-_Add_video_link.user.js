@@ -11,7 +11,12 @@ function addLink()
 {
     var video = document.querySelector("video");
     video.autoplay = false;
+    video.muted = true;
     video.pause();
+
+    video.addEventListener("play", function(){
+        video.pause();
+    }, false);
 
     var link = document.createElement("a");
     link.appendChild(document.createTextNode("Direct link"));
