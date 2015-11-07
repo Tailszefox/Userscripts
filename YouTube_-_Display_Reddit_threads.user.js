@@ -35,7 +35,7 @@ function getRedditSearchString()
     var videoId = getVideoId();
     if(videoId)
     {
-        return "https://api.reddit.com/search.json?q=" + encodeURI("(url:3D"+videoId+" OR url:"+videoId+") (site:youtube.com OR site:youtu.be)")
+        return "https://api.reddit.com/search.json?q=" + encodeURI("(url:\"3D"+videoId+"\" OR url:\""+videoId+"\") (site:youtube.com OR site:youtu.be)")
     }
 
     return null;
