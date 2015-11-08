@@ -72,7 +72,7 @@ function addRedditThread(div, thread)
     threadLink.appendChild(document.createTextNode(title));
 
     var subredditLink = document.createElement("a");
-    subredditLink.href = "https://www.reddit.com" + subreddit;
+    subredditLink.href = "https://www.reddit.com/r/" + subreddit;
     subredditLink.appendChild(document.createTextNode("/r/" + subreddit));
 
     li.appendChild(subredditLink);
