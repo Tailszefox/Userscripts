@@ -107,7 +107,7 @@ window.addEventListener("load", function(){
             {
                 document.querySelector(".sidebar__entry-insert").click();
 
-                var timeout = window.setTimeout(goToNext, 3000);
+                var timeout = window.setTimeout(goToNext, 10000);
                 var interval = window.setInterval(function(){
                     if(document.querySelector(".sidebar__entry-delete.is-hidden") == null)
                     {
