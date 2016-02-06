@@ -25,6 +25,17 @@ function setQueue(queue)
     GM_setValue("queue", queueJson);
 }
 
+function makeButton()
+{
+    var button = document.createElement("a");
+
+    button.className = "featured__action-button";
+    button.id = "launchQueueButton";
+    button.style.marginBottom = "15px";
+
+    return button;
+}
+
 window.addEventListener("load", function(){
     var href = window.location.href;
 
@@ -32,6 +43,8 @@ window.addEventListener("load", function(){
     if(href.indexOf("/giveaway/") == -1)
     {
         var queue = [];
+        GM_setValue("auto", false);
+
         var giveaways = document.querySelectorAll("div.giveaway__row-inner-wrap");
 
         for(var g of giveaways)
@@ -50,11 +63,7 @@ window.addEventListener("load", function(){
 
         setQueue(queue);
 
-        var launchQueueButton = document.createElement("a");
-
-        launchQueueButton.className = "featured__action-button";
-        launchQueueButton.id = "launchQueueButton";
-        launchQueueButton.style.marginBottom = "15px";
+        var launchQueueButton = makeButton();
 
         document.querySelector(".sidebar__search-container").parentNode.insertBefore(launchQueueButton, document.querySelector(".sidebar__search-container"));
 
@@ -65,6 +74,15 @@ window.addEventListener("load", function(){
             launchQueueButton.addEventListener("click", function(){
                 window.location.assign(queue[0]);
             }, false);
+
+            var launchAutoButton = makeButton();
+            launchAutoButton.appendChild(document.createTextNode("Launch queue (auto)"));
+            document.querySelector(".sidebar__search-container").parentNode.insertBefore(launchAutoButton, document.querySelector(".sidebar__search-container"));
+
+            launchAutoButton.addEventListener("click", function(){
+                GM_setValue("auto", true);
+                window.location.assign(queue[0]);
+            }, false);
         }
         else
             launchQueueButton.appendChild(document.createTextNode("Queue empty"));
@@ -73,6 +91,7 @@ window.addEventListener("load", function(){
     else
     {
         var queue = getQueue();
+        var auto = GM_getValue("auto");
         var currentGiveaway = window.location.href;
         var currentGiveawayPosition = queue.indexOf(currentGiveaway);
 
@@ -98,8 +117,12 @@ window.addEventListener("load", function(){
             else
                 skipQueueButton.appendChild(document.createTextNode("Leave queue"));
 
+            canEnter = false;
             if(document.querySelector(".sidebar__entry-insert") != null)
+            {
+                canEnter = true;
                 document.querySelector(".sidebar__search-container").parentNode.insertBefore(enterQueueButton, document.querySelector(".sidebar__search-container"));
+            }
             
             document.querySelector(".sidebar__search-container").parentNode.insertBefore(skipQueueButton, document.querySelector(".sidebar__search-container"));
 
@@ -131,6 +154,24 @@ window.addEventListener("load", function(){
 
             enterQueueButton.addEventListener("click", enterGiveaway, false);
             skipQueueButton.addEventListener("click", goToNext, false);
+
+            var description = document.querySelector(".page__description");
+            var headingsSmall = document.querySelectorAll(".featured__heading__small");
+
+            // Get the number of copies
+            if(headingsSmall.length == 2)
+                var nbCopies = parseInt(headingsSmall[0].textContent.substring(1, headingsSmall[0].textContent.search(" ")));
+            else
+                var nbCopies = 1;
+
+            if(auto)
+            {
+                // Skip if we can't enter, or if there's a description and it's not a big giveaway
+                if(! canEnter || (description != null && nbCopies < 5))
+                    skipQueueButton.click();
+                else
+                    enterQueueButton.click();
+            }
         }
     }
 });
