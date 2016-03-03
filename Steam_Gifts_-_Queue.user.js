@@ -160,7 +160,7 @@ window.addEventListener("load", function(){
 
             // Get the number of copies
             if(headingsSmall.length == 2)
-                var nbCopies = parseInt(headingsSmall[0].textContent.substring(1, headingsSmall[0].textContent.search(" ")));
+                var nbCopies = parseInt(headingsSmall[0].textContent.substring(1, headingsSmall[0].textContent.search(" ")).replace(",", ""));
             else
                 var nbCopies = 1;
 
