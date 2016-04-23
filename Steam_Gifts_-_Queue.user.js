@@ -4,6 +4,9 @@
 // @include     http://www.steamgifts.com/
 // @include     http://www.steamgifts.com/giveaways/search?type=*
 // @include     http://www.steamgifts.com/giveaway/*
+// @include     https://www.steamgifts.com/
+// @include     https://www.steamgifts.com/giveaways/search?type=*
+// @include     https://www.steamgifts.com/giveaway/*
 // @version     1
 // @grant       GM_setValue
 // @grant       GM_getValue
@@ -149,7 +152,7 @@ window.addEventListener("load", function(){
                 if(queue.length > 0)
                     window.location.assign(queue[0]);
                 else
-                    window.location.assign("http://www.steamgifts.com/giveaways/search?type=wishlist");
+                    window.location.assign("https://www.steamgifts.com/giveaways/search?type=wishlist");
             }
 
             enterQueueButton.addEventListener("click", enterGiveaway, false);
