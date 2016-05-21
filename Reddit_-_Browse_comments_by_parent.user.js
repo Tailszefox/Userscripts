@@ -15,6 +15,11 @@ function getPosition(element)
 function goTo(next)
 {
     var children = $("div[id^='siteTable_t3']").children();
+
+    // If there's only two children, we're in a comment thread
+    if(children.length == 2)
+        var children = $("div[id^='siteTable_t1_']").eq(0).children();
+
     var current = $("html").scrollTop();
 
     if(next)
