@@ -2,7 +2,7 @@
 // @name        Reddit - Browse comments by parent
 // @namespace   localhost
 // @description Browse comments by parent (root) comments
-// @include     https://www.reddit.com/r/*/comments/*
+// @include     https://*.reddit.com/r/*/comments/*
 // @version     1
 // @grant       none
 // ==/UserScript==
