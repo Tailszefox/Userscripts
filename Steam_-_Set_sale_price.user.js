@@ -4,6 +4,7 @@
 // @description Automatically sets sale price for inventory items
 // @include     https://steamcommunity.com/id/tailszefox/inventory
 // @include     https://steamcommunity.com/id/tailszefox/inventory/
+// @include     https://steamcommunity.com/id/tailszefox/inventory/#*
 // @version     1
 // @grant       none
 // ==/UserScript==
