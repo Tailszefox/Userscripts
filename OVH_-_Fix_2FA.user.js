@@ -3,6 +3,7 @@
 // @namespace   localhost
 // @description Swap the form's order so that Enter works correctly
 // @include     https://www.ovh.com/manager/web/login/
+// @include     https://www.ovh.com/auth/?*
 // @version     1
 // @grant       none
 // ==/UserScript==
