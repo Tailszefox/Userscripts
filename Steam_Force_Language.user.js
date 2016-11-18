@@ -24,7 +24,7 @@ for(var i = 0; i < langs.length; i++)
     var lang = langs[i];
     if(lang.href.indexOf("english") != -1)
     {
-        lang.click();
+        window.location.href = lang.href;
         break;
     }
 }
