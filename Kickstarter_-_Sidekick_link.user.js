@@ -9,9 +9,9 @@
 
 window.addEventListener("load", function(){
         // If the project is live
-        if(document.querySelector("#main_content").className.indexOf("Project-state-live") > -1)
+        if( document.querySelectorAll("#button-back-this-proj").length > 0 )
         {
-            var projectId = document.querySelector("#main_content").className.match(/Project([0-9]+)/);
+            var projectId = document.querySelector("#watching-widget").children[0].className.match(/Project([0-9]+)/);
 
             var div = document.createElement("div");
             var link = document.createElement("a");
@@ -19,8 +19,8 @@ window.addEventListener("load", function(){
 
             link.appendChild(document.createTextNode("View Sidekick page"));
             link.href = "http://sidekick.epfl.ch/campaign/" + projectId[1] +  "-project";
-            div.style.marginBottom = "40px";
+            div.style.marginTop = "20px";
 
-            document.querySelector(".NS_projects__deadline_copy").parentNode.insertBefore(div, document.querySelector(".NS_projects__deadline_copy"));
+            document.querySelector(".NS_campaigns__stats").parentNode.insertBefore(div, null);
         }
 });
