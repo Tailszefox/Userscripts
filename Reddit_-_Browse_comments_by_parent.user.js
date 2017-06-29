@@ -64,21 +64,25 @@ var interval = window.setInterval(function() {
 
     var previous = document.createElement("a");
     previous.style.cursor = "pointer";
-    previous.style.fontSize = "20px";
+    previous.style.font = '24px/1 "Batch"';
+    previous.style.color = "#888";
     previous.appendChild(document.createTextNode("\u2190"));
 
     var next = document.createElement("a");
     next.style.cursor = "pointer";
-    next.style.fontSize = "20px";
+    next.style.font = '24px/1 "Batch"';
+    next.style.color = "#888";
     next.appendChild(document.createTextNode("\u2192"));
 
+    $(previous).click(function() { goTo(false) } );
     $(next).click(function() { goTo(true) } );
 
-    var nrefloat = $("#NREFloat ul li")[0]
-    nrefloat.appendChild(document.createElement("br"));
-    nrefloat.appendChild(previous);
-    nrefloat.appendChild(document.createElement("br"));
-    nrefloat.appendChild(next);
+    var nreFloatLi = document.createElement("li");
+    nreFloatLi.appendChild(document.createElement("br"));
+    nreFloatLi.appendChild(previous);
+    nreFloatLi.appendChild(document.createElement("br"));
+    nreFloatLi.appendChild(next);
 
-    $(previous).click(function() { goTo(false) } );
+    var nreFloat = $("#NREFloat ul")[0];
+    nreFloat.appendChild(nreFloatLi);
 }, 10000);
