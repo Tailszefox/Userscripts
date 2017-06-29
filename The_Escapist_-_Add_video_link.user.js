@@ -27,4 +27,4 @@ function addLink()
     menu.insertBefore(link, menu.children[0]);
 }
 
-window.setTimeout(addLink, 3000);
+window.setTimeout(addLink, 5000);
