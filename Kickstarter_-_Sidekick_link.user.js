@@ -8,10 +8,11 @@
 // ==/UserScript==
 
 window.addEventListener("load", function(){
+    window.setTimeout(function(){
         // If the project is live
-        if( document.querySelectorAll("#button-back-this-proj").length > 0 )
+        if( document.querySelector("#main_content").className == "Campaign-state-live" )
         {
-            var projectId = document.querySelector("#watching-widget").children[0].className.match(/Project([0-9]+)/);
+            var projectId = document.querySelector("data[itemprop='Project[comments_count]']").className.match(/Project([0-9]+)/);
 
             var div = document.createElement("div");
             var link = document.createElement("a");
@@ -23,4 +24,5 @@ window.addEventListener("load", function(){
 
             document.querySelector(".NS_campaigns__stats").parentNode.insertBefore(div, null);
         }
+    }, 5000);
 });
