@@ -25,12 +25,12 @@ divComic.parentNode.insertBefore(p, divComic.nextSibling.nextSibling);
 var titleDiv = document.getElementById('ctitle');
 
 nmbr = document.getElementById('middleContainer');
-start = nmbr.innerHTML.indexOf("Permanent link to this comic: http://xkcd.com/")+46;
+start = nmbr.innerHTML.indexOf("Permanent link to this comic: https://xkcd.com/")+46;
 end = nmbr.innerHTML.indexOf("Image URL (for hotlinking/embedding)")-6;
 var comicNumber = nmbr.innerHTML.slice(start, end);
 
 var aExplain = document.createElement("a");
-aExplain.href = "http://www.explainxkcd.com/wiki/index.php?title=" + comicNumber;
+aExplain.href = "http://www.explainxkcd.com/wiki/index.php" + comicNumber;
 aExplain.appendChild(document.createTextNode("(Explain)"));
 
 titleDiv.appendChild(document.createTextNode(" "));
