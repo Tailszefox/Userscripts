@@ -44,9 +44,14 @@ function getRedditSearchString()
 // Create div that will contain the list
 function createArea()
 {
-    var position = document.getElementById("action-panel-details").nextElementSibling;
+    var position = document.querySelector("#meta-contents").parentNode.nextElementSibling;
+
     var div = document.createElement("div");
-    div.className = "yt-card yt-card-has-padding";
+    div.id = "redditThreads";
+    div.style.fontSize = "1.4rem";
+    div.style.fontWeight = "400";
+    div.style.lineHeight = "2.1rem";
+    div.style.color = "white";
 
     var ul = document.createElement("ul");
     div.appendChild(ul);
@@ -60,7 +65,10 @@ function createArea()
 function addRedditThread(div, thread)
 {
     var ul = div.firstChild;
+    ul.style.listStyleType = '"\u25b6"';
+
     var li = document.createElement("li");
+    li.style.paddingLeft = "10px";
 
     var link = thread.permalink;
     var subreddit = thread.subreddit;
@@ -69,10 +77,12 @@ function addRedditThread(div, thread)
 
     var threadLink = document.createElement("a");
     threadLink.href = "https://www.reddit.com" + link;
+    threadLink.style.color = "rgb(39, 147, 230)";
     threadLink.appendChild(document.createTextNode(title));
 
     var subredditLink = document.createElement("a");
     subredditLink.href = "https://www.reddit.com/r/" + subreddit;
+    subredditLink.style.color = "rgb(39, 147, 230)";
     subredditLink.appendChild(document.createTextNode("/r/" + subreddit));
 
     li.appendChild(subredditLink);
@@ -134,6 +144,16 @@ function displayRedditThreads()
     }
 }
 
+function checkDescription()
+{
+    if ( document.querySelector("#description") == null)
+        window.setTimeout(checkDescription, 1000);
+    else
+        displayRedditThreads();
+}
+
 // No iframe
 if(self == top)
-    displayRedditThreads();
+{
+    checkDescription();
+}
