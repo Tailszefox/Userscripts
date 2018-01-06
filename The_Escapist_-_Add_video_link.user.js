@@ -1,7 +1,9 @@
 // ==UserScript==
 // @name        The Escapist - Add video link
+// @author      Tailszefox
 // @namespace   localhost
 // @description Adds a direct link to the video
+// @icon        https://i.imgur.com/TCs4Wnm.png
 // @include     http://www.escapistmagazine.com/videos/view/*
 // @version     1
 // @grant       none

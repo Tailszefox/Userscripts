@@ -1,7 +1,9 @@
 // ==UserScript==
-// @name           xkcd alt-text
+// @name           XKCD - Display alt-text
+// @author         Tailszefox
 // @namespace      localhost
 // @description    Shows the alt-text and adds a link to explainxkcd
+// @icon           https://i.imgur.com/sOoBHDy.png
 // @include        http://xkcd.com/
 // @include        http://xkcd.com/*
 // @include        https://xkcd.com/

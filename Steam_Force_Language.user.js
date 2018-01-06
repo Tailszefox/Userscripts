@@ -1,7 +1,9 @@
 // ==UserScript==
-// @name        Steam Force Language
+// @name        Steam - Force language
+// @author      Tailszefox
 // @namespace   localhost
 // @description Forces language to English on Steam
+// @icon        https://i.imgur.com/3GYdiAO.png
 // @include     http://store.steampowered.com/*?l=french
 // @include     http://store.steampowered.com/*?l=french#*
 // @include     https://store.steampowered.com/*?l=french

@@ -1,10 +1,13 @@
 // ==UserScript==
 // @name        Dinosaur Comics Hidden Texts
+// @author      Tailszefox
 // @namespace   localhost
 // @description Shows Dinosaur Comics hidden texts
+// @icon        https://i.imgur.com/zRYAVvw.png
 // @include     http://www.qwantz.com/index.php?comic=*
 // @include     http://www.qwantz.com/index.php
 // @include     http://qwantz.com/index.php
+// @include     http://qwantz.com/
 // @version     1
 // @grant       none
 // ==/UserScript==

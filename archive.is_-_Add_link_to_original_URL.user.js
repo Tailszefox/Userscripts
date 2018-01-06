@@ -1,7 +1,9 @@
 // ==UserScript==
 // @name        archive.is - Add link to original URL
+// @author      Tailszefox
 // @namespace   localhost
 // @description Add a direct link to the page saved
+// @icon        https://i.imgur.com/7Gtrgrz.png
 // @include     https://archive.is/*
 // @version     1
 // @grant       none

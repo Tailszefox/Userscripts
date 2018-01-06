@@ -1,8 +1,10 @@
 // ==UserScript==
-// @name        Reddit YouTube Titles
+// @name        Reddit - Fetch YouTube titles
+// @author      Tailszefox
 // @namespace   localhost
 // @description Display the title of YouTube videos
-// @include     https://www.reddit.com/r/*/comments/*
+// @icon        https://i.imgur.com/onrFu0I.png
+// @include     https://*.reddit.com/r/*/comments/*
 // @version     1
 // @grant          GM_xmlhttpRequest
 // @grant          GM_addStyle

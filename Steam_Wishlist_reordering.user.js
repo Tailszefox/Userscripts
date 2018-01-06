@@ -1,7 +1,9 @@
 // ==UserScript==
 // @name        Steam - Wishlist reordering
+// @author      Tailszefox
 // @namespace   localhost
 // @description Reorders your wishlist using the choosen sort order
+// @icon        https://i.imgur.com/nXcltPQ.png
 // @include     https://steamcommunity.com/id/*/wishlist/?sort=*
 // @version     1
 // @grant       GM_setValue

@@ -1,7 +1,9 @@
 // ==UserScript==
 // @name        Reddit - Browse comments by parent
+// @author      Tailszefox
 // @namespace   localhost
 // @description Browse comments by parent (root) comments
+// @icon        https://i.imgur.com/kKgg42d.png
 // @include     https://*.reddit.com/r/*/comments/*
 // @version     1
 // @grant       none

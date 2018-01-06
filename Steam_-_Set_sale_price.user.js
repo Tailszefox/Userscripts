@@ -1,7 +1,9 @@
 // ==UserScript==
-// @name        Steam - Set sale price
+// @name        Steam - Set sale price for inventory
+// @author      Tailszefox
 // @namespace   localhost
 // @description Automatically sets sale price for inventory items
+// @icon        https://i.imgur.com/5jMQgzt.png
 // @include     https://steamcommunity.com/id/tailszefox/inventory
 // @include     https://steamcommunity.com/id/tailszefox/inventory/
 // @include     https://steamcommunity.com/id/tailszefox/inventory/#*

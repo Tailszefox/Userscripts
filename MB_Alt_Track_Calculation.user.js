@@ -1,7 +1,9 @@
 // ==UserScript==
 // @name        MB - Alternate track similarity calculation
-// @namespace   http://tailszefox.no-ip.com
+// @author      Tailszefox
+// @namespace   http://tailszefox.net/
 // @description Allows to keep recordings when using the track parser.
+// @icon        https://i.imgur.com/kdfat4E.png
 // @include     http*://*.mbsandbox.org/release/*/edit*
 // @include     http*://*.mbsandbox.org/release/add*
 // @include     http*://*musicbrainz.org/release/*/edit*

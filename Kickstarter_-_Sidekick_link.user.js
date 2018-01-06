@@ -1,7 +1,9 @@
 // ==UserScript==
 // @name        Kickstarter - Sidekick link
+// @author      Tailszefox
 // @namespace   localhost
 // @description Adds a Sidekick link to Kickstarter projects
+// @icon        https://i.imgur.com/cK0HSWf.png
 // @include     https://www.kickstarter.com/projects/*
 // @version     1
 // @grant       none

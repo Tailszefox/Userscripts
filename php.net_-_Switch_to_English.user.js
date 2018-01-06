@@ -1,7 +1,9 @@
 // ==UserScript==
-// @name        php.net - Switch to English
+// @name        PHP.net - Switch to English
+// @author       Tailszefox
 // @namespace   localhost
 // @description Forces php.net to be displayed in English
+// @icon        https://i.imgur.com/yiF0ATF.png
 // @include     https://secure.php.net/manual/fr/*
 // @version     1
 // @grant       none
