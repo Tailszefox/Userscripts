@@ -9,7 +9,7 @@
 // @grant       none
 // ==/UserScript==
 
-var toolsList = document.getElementById("DIVSHARE").parentNode;
+var toolsList = document.querySelector("#HEADER > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1)");
 var url = document.getElementsByName("q")[0].value;
 var link = document.createElement("a");
 
