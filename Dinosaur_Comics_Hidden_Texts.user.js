@@ -37,7 +37,7 @@ pAlt.appendChild(document.createTextNode(document.getElementsByClassName("comic"
 pEmail.appendChild(document.createTextNode(mailTo));
 pRss.appendChild(document.createTextNode(rssTitle));
 
-headerText = document.getElementsByClassName("headertext")[0];
+headerText = document.querySelector("body > center");
 
 div.appendChild(pAlt);
 div.appendChild(pEmail);
