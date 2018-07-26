@@ -99,6 +99,12 @@ function process(spf)
         clipboard = "";
         addCopyToClipboardButtons();
         addInterval(addCopyToClipboardButtons, 5000);
+      
+        // Playlist page: change playlist link
+        if(href.indexOf("/playlists") != -1)
+        {
+          addInterval(changePlaylistLinks, 5000);
+        }
     }
     // Video
     else if(href.indexOf("/watch?") != -1)
@@ -332,6 +338,31 @@ function addRedditThreads()
             }
         });
     }
+}
+
+// Change playlist links to playlist itself instead of first video
+function changePlaylistLinks()
+{
+  var playlistLinks = document.querySelectorAll("a.ytd-grid-playlist-renderer");
+  
+  // No playlist links found yet
+  if(playlistLinks.length == 0)
+  {
+    console.log("Waiting for playlist links...")
+    return;
+  }
+  
+  console.log("Playlist links found:")
+  console.log(playlistLinks);
+  clearOneInterval("changePlaylistLinks");
+  
+  playlistLinks.forEach(
+    function(playlistLink)
+    {
+      
+      playlistLink.href = playlistLink.href.replace(/watch\?v=([-_a-zA-Z0-9]{11})&/gm, `playlist?`);
+    }
+  );
 }
 
 // TODO: use events maybe
