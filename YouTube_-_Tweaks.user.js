@@ -112,7 +112,7 @@ function process(spf)
         // Only called with SPF
         if (spf == true)
         {
-            addInterval(stopAutoplay, 100);
+            //addInterval(stopAutoplay, 100);
             addInterval(addRedditThreads, 1000);
         }
     }
