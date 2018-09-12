@@ -23,6 +23,6 @@ if( window.patreon.bootstrap.post.data.attributes.embed )
   aLink.appendChild(txtNode);
   divLink.appendChild(aLink);
   
-  var titleNode = document.querySelector(".ejBwtx");
+  var titleNode = document.querySelector("figure[title='video thumbnail']").nextSibling;
   titleNode.parentNode.insertBefore(divLink, titleNode);
 }
