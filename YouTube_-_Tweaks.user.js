@@ -114,6 +114,11 @@ function process(spf)
         {
             //addInterval(stopAutoplay, 100);
             addInterval(addRedditThreads, 1000);
+            addInterval(addResumeLink, 1000);
+            addInterval(expandDescription, 1000);
+            addInterval(expandPlayerContainer, 1000);
+            addInterval(expandPlayer, 5000);
+            //addInterval(switchToFullHd, 5000);
         }
     }
 }
@@ -368,7 +373,7 @@ function changePlaylistLinks()
 // TODO: use events maybe
 function stopAutoplay()
 {
-    var video = document.querySelector(".html5-main-video")
+    var video = document.querySelector(".html5-main-video");
 
     // No video found
     if (video == null)
@@ -388,4 +393,140 @@ function stopAutoplay()
     console.log("Video ready!");
     video.pause();
     clearOneInterval("stopAutoplay");
+}
+
+function addResumeLink()
+{  
+    var video = document.querySelector(".html5-main-video");
+  
+    // No video found
+    if (video == null)
+    {
+        console.log("Waiting for video...");
+        return;
+    }
+  
+    var oldDivResume = document.querySelector("#divResume");
+
+    if(oldDivResume)
+    {
+        oldDivResume.parentNode.removeChild(oldDivResume);
+    }
+  
+    // No resume parameter in query
+    if( window.location.search.indexOf("&t=") == -1 )
+    {
+        clearOneInterval("addResumeLink");
+        return;
+    }
+  
+    var resumeTime = window.location.search.split("&t=")[1].replace("s", "");
+    console.log("Resume time is", resumeTime);
+  
+    var divResume = document.createElement("div");
+    var aResume = document.createElement("a");
+    var textResume = document.createTextNode("Resume to " + resumeTime);
+    
+    divResume.id = "divResume";
+  
+    aResume.dataset.resumeSeconds = resumeTime;
+    aResume.style.color = "white";
+    aResume.style.cursor = "pointer";
+  
+    aResume.addEventListener("click", function(e) {
+        var resumeTo = this.dataset.resumeSeconds;
+        video.currentTime = resumeTo;
+    }, true);
+  
+    aResume.appendChild(textResume);
+    divResume.appendChild(aResume);
+    document.querySelector("div#info.style-scope ytd-video-primary-info-renderer").appendChild(divResume);
+  
+    clearOneInterval("addResumeLink");
+}
+
+function expandDescription()
+{
+    var video = document.querySelector(".html5-main-video");
+  
+    // No video found
+    if (video == null)
+    {
+        console.log("Waiting for video...");
+        return;
+    }
+  
+    document.querySelector("ytd-video-secondary-info-renderer.style-scope #more").click();
+  
+    clearOneInterval("expandDescription");
+}
+
+function expandPlayerContainer()
+{
+    var video = document.querySelector(".html5-main-video");
+  
+    // No video found
+    if (video == null)
+    {
+        console.log("Waiting for video...");
+        return;
+    }
+  
+    var container = document.querySelector("div#player-theater-container.style-scope");
+    container.style.height = "900px";
+    container.style.minHeight = "unset";
+    container.style.maxHeight = "unset";
+  
+    var videoContainer = document.querySelector("div.html5-video-container");
+    videoContainer.style.height = "900px";
+  
+    video.style.width = "100%";
+    video.style.height = "inherit";
+    video.style.top = "inherit";
+    video.style.left ="inherit";
+  
+    clearOneInterval("expandPlayerContainer");
+}
+
+function expandPlayer()
+{
+    var video = document.querySelector(".html5-main-video");
+  
+    // No video found
+    if (video == null)
+    {
+        console.log("Waiting for video...");
+        return;
+    }
+  
+    video.style.width = "100%";
+    video.style.height = "inherit";
+    video.style.top = "inherit";
+    video.style.left ="inherit";
+  
+    clearOneInterval("expandPlayer");
+}
+
+function switchToFullHd()
+{
+    var video = document.querySelector(".html5-main-video");
+  
+    // No video found
+    if (video == null)
+    {
+        console.log("Waiting for video...");
+        return;
+    }
+  
+    var playerApi = document.getElementById("movie_player");
+    console.log(playerApi.getAvailableQualityLevels());
+  
+    // 1080p not available
+    if(playerApi.getAvailableQualityLevels().indexOf("hd1080") == -1)
+    {
+        clearOneInterval("switchToFullHd");
+        return;
+    }
+  
+    clearOneInterval("switchToFullHd");
 }
