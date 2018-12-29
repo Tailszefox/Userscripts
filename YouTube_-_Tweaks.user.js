@@ -420,7 +420,7 @@ function addResumeLink()
         return;
     }
   
-    var resumeTime = window.location.search.split("&t=")[1].replace("s", "");
+    var resumeTime = window.location.search.split("&t=")[1].split("&")[0].replace("s", "");
     console.log("Resume time is", resumeTime);
   
     var divResume = document.createElement("div");
