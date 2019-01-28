@@ -8,6 +8,7 @@
 // @exclude     https://play.google.com/store/*hl=en*
 // @version     1
 // @grant       none
+// @inject-into content
 // ==/UserScript==
 
 var newLocation = window.location.href;

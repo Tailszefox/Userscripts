@@ -9,6 +9,7 @@
 // @match       http://www.tweetdeck.twitter.com/*
 // @version     1.0
 // @grant       none
+// @inject-into content
 // ==/UserScript==
 
 console.log("TweakDeck loaded.");

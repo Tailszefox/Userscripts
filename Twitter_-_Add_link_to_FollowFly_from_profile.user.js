@@ -7,6 +7,7 @@
 // @include     /^https://twitter\.com/[a-zA-Z0-9_]+/?$/
 // @version     1
 // @grant       none
+// @inject-into auto
 // ==/UserScript==
 
 var l = document.createElement("a");
