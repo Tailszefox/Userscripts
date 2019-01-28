@@ -57,7 +57,7 @@ function goTo(next)
 }
 
 var interval = window.setInterval(function() {
-    if($("#NREFloat ul li").length == 0)
+    if($(".res-floater-visibleAfterScroll ul li").length == 0)
     {
         return;
     }
@@ -85,6 +85,6 @@ var interval = window.setInterval(function() {
     nreFloatLi.appendChild(document.createElement("br"));
     nreFloatLi.appendChild(next);
 
-    var nreFloat = $("#NREFloat ul")[0];
+    var nreFloat = $(".res-floater-visibleAfterScroll ul")[0];
     nreFloat.appendChild(nreFloatLi);
 }, 10000);
