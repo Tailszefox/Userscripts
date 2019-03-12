@@ -209,6 +209,12 @@ function addRedditThreads()
         console.log("Clearing already existing reddit threads");
         document.querySelector("#redditThreads").remove();
     }
+  
+    if( document.querySelector("#redditThreadsNsfw") != null )
+    {
+        console.log("Clearing already existing NSFW reddit threads");
+        document.querySelector("#redditThreadsNsfw").remove();
+    }
 
     // Extract current video ID
     function getVideoId()
@@ -256,12 +262,17 @@ function addRedditThreads()
     }
 
     // Create div that will contain the list
-    function createArea()
+    function createArea(nsfw)
     {
         var position = document.querySelector("#meta-contents").parentNode.nextElementSibling;
 
         var div = document.createElement("div");
-        div.id = "redditThreads";
+      
+        if(nsfw)
+          div.id = "redditThreadsNsfw";
+        else
+          div.id = "redditThreads";
+        
         div.style.fontSize = "1.4rem";
         div.style.fontWeight = "400";
         div.style.lineHeight = "2.1rem";
@@ -351,7 +362,7 @@ function addRedditThreads()
 
                 if(finalResults.length > 0)
                 {
-                    var div = createArea();
+                    var div = createArea(false);
 
                     for(var i = 0; i < finalResults.length; i ++)
                     {
@@ -397,7 +408,7 @@ function addRedditThreads()
 
                 if(finalResults.length > 0)
                 {
-                    var div = createArea();
+                    var div = createArea(true);
 
                     for(var i = 0; i < finalResults.length; i ++)
                     {
