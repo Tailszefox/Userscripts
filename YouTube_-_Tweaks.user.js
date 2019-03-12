@@ -242,6 +242,18 @@ function addRedditThreads()
 
         return null;
     }
+  
+    // Get search string for Reddit to get NSFW threads
+    function getRedditSearchStringNsfw()
+    {
+        var videoId = getVideoId();
+        if(videoId)
+        {
+            return "https://api.reddit.com/search.json?q=" + encodeURI("(url:\"3D"+videoId+"\" OR url:\""+videoId+"\") (site:youtube.com OR site:youtu.be) nsfw:yes")
+        }
+
+        return null;
+    }
 
     // Create div that will contain the list
     function createArea()
@@ -264,7 +276,7 @@ function addRedditThreads()
     }
 
     // Add a thread to the list
-    function addRedditThread(div, thread)
+    function addRedditThread(div, thread, nsfw)
     {
         console.log("Adding thread from " + thread.subreddit);
 
@@ -294,6 +306,12 @@ function addRedditThreads()
         li.appendChild(threadLink);
         li.appendChild(document.createTextNode(" \u25cf "));
         li.appendChild(document.createTextNode(comments + " comments"));
+      
+        if(nsfw)
+        {
+          li.appendChild(document.createTextNode(" \u25cf "));
+          li.appendChild(document.createTextNode("(NSFW)"));
+        }
 
         ul.appendChild(li);
     }
@@ -337,7 +355,53 @@ function addRedditThreads()
 
                     for(var i = 0; i < finalResults.length; i ++)
                     {
-                        addRedditThread(div, finalResults[i]);
+                        addRedditThread(div, finalResults[i], false);
+                    }
+                }
+            }
+        });
+    }
+  
+    var searchStringNsfw = getRedditSearchStringNsfw();
+
+    if(searchStringNsfw)
+    {
+        GM_xmlhttpRequest({
+            method: "GET",
+            url: searchStringNsfw,
+            onload: function(response) {
+                results = JSON.parse(response.responseText);
+                var finalResults = [];
+
+                // Error
+                if (results === {} || results.kind !== 'Listing' || results.data.children.length === 0)
+                    return;
+
+                var searchResults = results.data.children;
+
+                for(var i = 0; i < searchResults.length; i++)
+                {
+                    var result = searchResults[i];
+
+                    // No data
+                    if(! result.data)
+                        continue;
+
+                    finalResults.push(result.data);
+                }
+
+                // Sort by decreasing number of comments
+                finalResults.sort(function(a, b){
+                    return parseInt(b.num_comments) - parseInt(a.num_comments);
+                });
+
+                if(finalResults.length > 0)
+                {
+                    var div = createArea();
+
+                    for(var i = 0; i < finalResults.length; i ++)
+                    {
+                        addRedditThread(div, finalResults[i], true);
                     }
                 }
             }
