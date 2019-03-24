@@ -6,7 +6,7 @@
 // @icon        https://i.imgur.com/TCs4Wnm.png
 // @include     http://www.escapistmagazine.com/videos/view/*
 // @include     https://www.escapistmagazine.com/v2/*
-// @version     1
+// @version     1.0
 // @grant       none
 // ==/UserScript==
 

@@ -10,7 +10,7 @@
 // @include     http*://*musicbrainz.org/release/add*
 // @exclude     *//*/*mbsandbox.org/*
 // @exclude     *//*/*musicbrainz.org/*
-// @version     1
+// @version     1.0
 // @grant       none
 // ==/UserScript==
 

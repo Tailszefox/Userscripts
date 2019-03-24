@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name        Patreon YouTube
 // @author      Tailszefox
+// @icon        https://i.imgur.com/cv4pMfm.png
 // @namespace   localhost
 // @description Adds a link to YouTube videos on Patreon posts
 // @include     https://www.patreon.com/posts/*

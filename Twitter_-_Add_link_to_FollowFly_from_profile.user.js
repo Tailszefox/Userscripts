@@ -5,7 +5,7 @@
 // @description Get best tweets from profile using FollowFly
 // @icon        https://i.imgur.com/l3AdNnA.png
 // @include     /^https://twitter\.com/[a-zA-Z0-9_]+/?$/
-// @version     1
+// @version     1.0
 // @grant       none
 // @inject-into auto
 // ==/UserScript==

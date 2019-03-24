@@ -5,7 +5,7 @@
 // @description Adds a Kicktraq link to Kickstarter projects
 // @icon        https://i.imgur.com/cK0HSWf.png
 // @include     https://www.kickstarter.com/projects/*
-// @version     1
+// @version     1.0
 // @grant       none
 // ==/UserScript==
 

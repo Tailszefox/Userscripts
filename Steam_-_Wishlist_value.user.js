@@ -7,7 +7,7 @@
 // @include     http://store.steampowered.com/wishlist/profiles/76561197967038647
 // @include     http://store.steampowered.com/wishlist/profiles/76561197967038647/
 // @include     http://store.steampowered.com/wishlist/profiles/76561197967038647/*
-// @version     1
+// @version     1.0
 // @grant       none
 // ==/UserScript==
 

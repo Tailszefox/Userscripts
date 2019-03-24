@@ -5,7 +5,7 @@
 // @description Forces php.net to be displayed in English
 // @icon        https://i.imgur.com/yiF0ATF.png
 // @include     https://secure.php.net/manual/fr/*
-// @version     1
+// @version     1.0
 // @grant       none
 // ==/UserScript==
 

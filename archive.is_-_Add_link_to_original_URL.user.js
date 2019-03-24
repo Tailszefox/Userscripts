@@ -5,7 +5,7 @@
 // @description Add a direct link to the page saved
 // @icon        https://i.imgur.com/7Gtrgrz.png
 // @include     https://archive.is/*
-// @version     1
+// @version     1.0
 // @grant       none
 // ==/UserScript==
 

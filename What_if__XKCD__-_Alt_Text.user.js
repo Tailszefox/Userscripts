@@ -5,7 +5,7 @@
 // @namespace   localhost
 // @icon        https://i.imgur.com/Ls1FFQu.png
 // @include     https://what-if.xkcd.com/*/
-// @version     1
+// @version     1.0
 // @grant       none
 // ==/UserScript==
 

@@ -5,7 +5,7 @@
 // @description Some tweaks to make YouTube better
 // @icon        https://i.imgur.com/8qxoj2N.png
 // @include     https://www.youtube.com/*
-// @version     1
+// @version     1.0
 // @grant       GM_setClipboard
 // @grant       GM_xmlhttpRequest
 // @run-at      document-start

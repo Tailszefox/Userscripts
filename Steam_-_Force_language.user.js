@@ -12,7 +12,7 @@
 // @include     http://steamcommunity.com/*?l=french#*
 // @include     https://steamcommunity.com/*?l=french
 // @include     https://steamcommunity.com/*?l=french#*
-// @version     1
+// @version     1.0
 // @grant       none
 // ==/UserScript==
 

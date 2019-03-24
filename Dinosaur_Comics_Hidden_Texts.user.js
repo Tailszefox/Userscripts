@@ -8,7 +8,7 @@
 // @include     http://www.qwantz.com/index.php
 // @include     http://qwantz.com/index.php
 // @include     http://qwantz.com/
-// @version     1
+// @version     1.0
 // @grant       none
 // ==/UserScript==
 

@@ -5,7 +5,7 @@
 // @description Display the title of YouTube videos
 // @icon        https://i.imgur.com/onrFu0I.png
 // @include     https://*.reddit.com/r/*/comments/*
-// @version     1
+// @version     1.0
 // @grant          GM_xmlhttpRequest
 // @grant          GM_addStyle
 // ==/UserScript==

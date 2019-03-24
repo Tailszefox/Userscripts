@@ -3,6 +3,7 @@
 // @author      Tailszefox
 // @namespace   localhost
 // @description Change layout on front page of Numerama because the button to do it doesn't work
+// @icon        https://i.imgur.com/V1mDH4l.png
 // @match       https://www.numerama.com/
 // @version     1.0
 // @grant       none

@@ -3,6 +3,7 @@
 // @author      Tailszefox
 // @namespace   localhost
 // @description Some tweaks for TweetDeck
+// @icon        https://i.imgur.com/4KUh2eL.png
 // @match       https://tweetdeck.twitter.com/*
 // @match       http://tweetdeck.twitter.com/*
 // @match       https://www.tweetdeck.twitter.com/*

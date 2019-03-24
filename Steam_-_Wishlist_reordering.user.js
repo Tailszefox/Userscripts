@@ -5,7 +5,7 @@
 // @description Reorders your wishlist using the choosen sort order
 // @icon        https://i.imgur.com/nXcltPQ.png
 // @include     https://steamcommunity.com/id/*/wishlist/?sort=*
-// @version     1
+// @version     1.0
 // @grant       GM_setValue
 // @grant       GM_getValue
 // ==/UserScript==
