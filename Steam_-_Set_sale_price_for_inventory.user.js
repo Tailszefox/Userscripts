@@ -7,7 +7,7 @@
 // @include     https://steamcommunity.com/id/tailszefox/inventory
 // @include     https://steamcommunity.com/id/tailszefox/inventory/
 // @include     https://steamcommunity.com/id/tailszefox/inventory/#*
-// @version     1
+// @version     1.0
 // @grant       none
 // ==/UserScript==
 
