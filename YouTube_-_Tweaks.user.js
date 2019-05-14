@@ -5,7 +5,7 @@
 // @description Some tweaks to make YouTube better
 // @icon        https://i.imgur.com/8qxoj2N.png
 // @include     https://www.youtube.com/*
-// @version     1.0
+// @version     1.1
 // @grant       GM_setClipboard
 // @grant       GM_xmlhttpRequest
 // @run-at      document-start
@@ -118,6 +118,7 @@ function process(spf)
             addInterval(expandDescription, 1000);
             addInterval(expandPlayerContainer, 1000);
             addInterval(expandPlayer, 5000);
+            addInterval(parseDescriptionForTracklist, 5000);
             //addInterval(switchToFullHd, 5000);
         }
     }
@@ -535,6 +536,104 @@ function expandDescription()
   
     clearOneInterval("expandDescription");
 }
+
+function parseDescriptionForTracklist()
+{
+    var video = document.querySelector(".html5-main-video");
+  
+    // No video found
+    if (video == null)
+    {
+        console.log("Waiting for video...");
+        return;
+    }
+  
+    clearOneInterval("parseDescriptionForTracklist");
+  
+    var descriptionText = document.querySelector("#description").innerText;
+    var regex = /(^(.+)\s+((?:\d+:)?\d+:\d{2})$|^((?:\d+:)?\d+:\d{2})\s+(.+)$)/gm;
+    var tracklist = [];
+    
+    let m;
+    while ((m = regex.exec(descriptionText)) !== null) {
+        if (m.index === regex.lastIndex) {
+            regex.lastIndex++;
+        }
+
+        let track = [];
+        let trackTimeIndex;
+        let trackNameIndex;
+      
+        if(m[2] !== undefined)
+        {
+          trackTimeIndex = 3;
+          trackNameIndex = 2;
+        }
+        else
+        {
+          trackTimeIndex = 4;
+          trackNameIndex = 5;
+        }
+      
+        // Add track beginning converted to seconds
+        track.push(m[trackTimeIndex].split(':').reduce((acc,time) => (60 * acc) + +time));
+        // Add track title
+        track.push(m[trackNameIndex]);
+      
+        // Add track to tracklist
+        tracklist.push(track);
+    }
+  
+    console.log("Tracklist:", tracklist);
+  
+    var oldCurrentTrack = document.querySelector("#currentTrackDiv");
+
+    if(oldCurrentTrack)
+    {
+        oldCurrentTrack.parentNode.removeChild(oldCurrentTrack);
+    }
+  
+    // No tracks found
+    if(tracklist.length == 0)
+    {
+      return;
+    }
+  
+    var currentTrackElement = document.createElement('template');
+    currentTrackElement.innerHTML = '<div id="currentTrackDiv" style="position: absolute;top: 80px;right: 30px;background-color: #00000069;padding: 5px;"><span id="currentTrack" style="font-weight: bold;font-size: 22pt; color:#fff;"></span></div>';
+    document.querySelector("#content").appendChild(currentTrackElement.content.firstChild);
+  
+    // Check the current position to find the current track played
+    document.parsedTracklist = tracklist;
+    addInterval(showCurrentTrack, 5000);
+}
+
+function showCurrentTrack()
+{
+  var position = document.querySelector(".html5-main-video").currentTime;
+  var tracklist = document.parsedTracklist;
+  var currentTrackSpan = document.querySelector("#currentTrack");
+  var currentTrackTitle = "";
+  
+  for(var i = 0; i < tracklist.length; i++)
+  {
+    let trackStart = tracklist[i][0];
+    
+    // We found the track after the current one
+    if(trackStart > position)
+    {
+      currentTrackTitle = tracklist[i - 1][1];
+      break;
+    }
+  }
+  
+  // If no title was found, we're on the last track
+  if(currentTrackTitle.length == 0)
+    currentTrackTitle = tracklist[tracklist.length - 1][1];
+  
+  currentTrackSpan.textContent = i + "/" + tracklist.length + " - " + currentTrackTitle;
+}
+
 
 function expandPlayerContainer()
 {
