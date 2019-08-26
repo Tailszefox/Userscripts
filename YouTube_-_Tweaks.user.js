@@ -551,7 +551,7 @@ function parseDescriptionForTracklist()
     clearOneInterval("parseDescriptionForTracklist");
   
     var descriptionText = document.querySelector("#description").innerText;
-    var regex = /(^(.+)\s+((?:\d+:)?\d+:\d{2})$|^((?:\d+:)?\d+:\d{2})\s+(.+)$)/gm;
+    var regex = /(^(.+)\s+((?:\d+:)?\d+:\d{2})$|^\[?((?:\d+:)?\d+:\d{2})\]?\s+(.+)$)/gm;
     var tracklist = [];
     
     let m;
