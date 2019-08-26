@@ -5,9 +5,12 @@
 // @description Display the title of YouTube videos
 // @icon        https://i.imgur.com/onrFu0I.png
 // @include     https://*.reddit.com/r/*/comments/*
-// @version     1.0
-// @grant          GM_xmlhttpRequest
-// @grant          GM_addStyle
+// @version     1.1
+// @grant       GM_xmlhttpRequest
+// @grant       GM_addStyle
+// @grant       GM_registerMenuCommand
+// @grant       GM_setValue
+// @grant       GM_getValue
 // ==/UserScript==
 
 function onLoad() {
@@ -34,7 +37,14 @@ function parse(url)
 
 function request(l, vid)
 {
-    net.json('https://www.googleapis.com/youtube/v3/videos?id=' + vid + '&part=snippet&fields=items(snippet/title)&' + window.atob('a2V5PUFJemFTeURXeE9yNExpNEE2SHRZeDlrN2JWYkNRNjh2cHdKSnVvYw=='), function(code, obj, txt) {
+    var apiKey = GM_getValue("apiKey", null);
+    
+    if(apiKey === null)
+    {
+      alert("Can't fetch YouTube titles; use userscript menu to enter API key.");
+    }
+  
+    net.json('https://www.googleapis.com/youtube/v3/videos?id=' + vid + '&part=snippet&fields=items(snippet/title)&key=' + apiKey, function(code, obj, txt) {
         var item = obj.items[0];
         var title = item.snippet.title;
         decorate(l, title);
@@ -103,4 +113,11 @@ var net = {
     }
 };
 
+function registerApiKey()
+{
+    var apiKey = prompt("Please enter your YouTube API key");
+    GM_setValue("apiKey", apiKey);
+}
+
+GM_registerMenuCommand("Set API key", registerApiKey)
 window.setTimeout(onLoad, 100);
