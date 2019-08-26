@@ -6,7 +6,7 @@
 // @icon        https://i.imgur.com/TCs4Wnm.png
 // @include     http://www.escapistmagazine.com/videos/view/*
 // @include     https://www.escapistmagazine.com/v2/*
-// @version     1.0
+// @version     1.1
 // @grant       none
 // ==/UserScript==
 
@@ -25,11 +25,8 @@ function addLink()
     link.appendChild(document.createTextNode("Direct link"));
     link.className = "video_menu_link";
     link.href = video.src;
-  
-    var divider = document.querySelector(".dot-divider").cloneNode(true);
 
-    var menu = document.querySelector(".meta-container");
-    menu.appendChild(divider);
+    var menu = document.querySelector(".single-entry-thumb");
     menu.appendChild(link);
 }
 
