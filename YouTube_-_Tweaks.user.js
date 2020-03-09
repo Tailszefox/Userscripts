@@ -278,6 +278,7 @@ function addRedditThreads()
         div.style.fontWeight = "400";
         div.style.lineHeight = "2.1rem";
         div.style.color = "white";
+        div.style.paddingBottom = "40px";
 
         var ul = document.createElement("ul");
         div.appendChild(ul);
