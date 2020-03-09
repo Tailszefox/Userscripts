@@ -4,7 +4,7 @@
 // @namespace      localhost
 // @description    Shows the alt-text and adds a link to explainxkcd
 // @icon           https://i.imgur.com/sOoBHDy.png
-// @version        1.0
+// @version        1.1
 // @include        http://xkcd.com/
 // @include        http://xkcd.com/*
 // @include        https://xkcd.com/
@@ -17,7 +17,7 @@
 // ==/UserScript==
 
 var divComic = document.getElementById("comic");
-var img = divComic.getElementsByTagName("img")[0];
+var img = divComic.querySelector("img");
 
 alt = img.title;
 var p = document.createElement("p");
