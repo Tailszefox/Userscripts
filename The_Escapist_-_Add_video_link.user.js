@@ -26,8 +26,8 @@ function addLink()
     link.className = "video_menu_link";
     link.href = video.src;
 
-    var menu = document.querySelector(".single-entry-thumb");
-    menu.appendChild(link);
+    var menu = document.querySelector(".single-content");
+    menu.prepend(link);
 }
 
 window.setTimeout(addLink, 5000);
