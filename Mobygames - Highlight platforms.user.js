@@ -99,7 +99,12 @@ function highlightPlatforms() {
             if(foundWanted === wantedPlatforms.length)
             {
                 platformList.style.backgroundColor = 'blue';
-            	platformList.style.color = 'white'; // Ensure text is readable on blue background
+            	platformList.style.color = 'white';
+            }
+            else if(foundWanted === (wantedPlatforms.length-1) && wantedPlatforms.length >= 3)
+            {
+                platformList.style.backgroundColor = '#4e0000';
+            	platformList.style.color = 'white';
             }
         }
     });
