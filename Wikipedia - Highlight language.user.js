@@ -4,53 +4,38 @@
 // @match           https://fr.wikipedia.org/wiki/*
 // @match           https://en.wiktionary.org/wiki/*
 // @match           https://fr.wiktionary.org/wiki/*
-// @version         1.0
+// @version         1.1
 // ==/UserScript==
 
 (function() {
     const targetLang = location.hostname.startsWith('fr.') ? 'en' : 'fr';
 
-    function highlightLanguage(list) {
-        window.setTimeout(() => {
-            const link = list.querySelector(`a[lang="${targetLang}"]`);
-            if (!link) return;
-            const item = link.closest('li') ?? link.parentElement;
-            item.style.cssText += 'background:#ffe066;border-radius:4px;';
-            item.parentElement.prepend(item);
-        }, 100);
+    function highlightItem(item) {
+        if (item.dataset.langHighlighted) return;
+        item.dataset.langHighlighted = '1';
+        item.style.cssText += 'background:rgb(0, 25, 100);border-radius:4px;';
+        item.parentElement.prepend(item);
     }
 
-    function observeList() {
-        const existing = document.querySelector('.row.uls-language-list.uls-lcd');
-        if (existing) {
-            highlightLanguage(existing);
-            return;
-        }
-        const observer = new MutationObserver((mutations, obs) => {
-            for (const mutation of mutations) {
-                for (const node of mutation.addedNodes) {
-                    if (!(node instanceof Element)) continue;
-                    const list = node.classList.contains('uls-language-list') ?
-                        node :
-                        node.querySelector('.row.uls-language-list.uls-lcd');
-                    if (list) {
-                        highlightLanguage(list);
-                        obs.disconnect();
-                        return;
-                    }
-                }
+    function tryHighlight(root) {
+        const selector = `li[data-language-code="${targetLang}"]`;
+        if (root.matches?.(selector)) highlightItem(root);
+        root.querySelectorAll?.(selector).forEach(highlightItem);
+    }
+
+    // The language panel (ULS rewrite) is rendered on demand and can be
+    // reopened, so watch persistently and highlight matching items as they
+    // appear. The language code lives on the <li>, not the <a>.
+    tryHighlight(document.body);
+
+    new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+            for (const node of mutation.addedNodes) {
+                if (node instanceof Element) tryHighlight(node);
             }
-        });
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
-        });
-    }
-
-    const checkbox = document.getElementById('p-lang-btn-checkbox');
-    if (checkbox) {
-        checkbox.addEventListener('click', observeList, {
-            once: true
-        });
-    }
+        }
+    }).observe(document.body, {
+        childList: true,
+        subtree: true
+    });
 })();
